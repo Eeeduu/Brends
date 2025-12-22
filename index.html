@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Para Brenda 💙</title>
+    <style>
+        :root {
+            --bg-blue: #1e3a8a;
+            --envelope-w: 150px;
+            --envelope-h: 100px;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: var(--bg-blue);
+            font-family: 'Georgia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Camada para o GIF de fundo */
+        #extravagant-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 1s ease-in;
+            background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExejRldWwzZnNxYmsxYWk1ZGh2ZTM1amFkbnU4aHZsMjV2bXJncDl1NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TNwzWFZog9XIIwUHH7/giphy.gif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Envelope Fechado */
+        #envelope-closed {
+            width: var(--envelope-w);
+            height: var(--envelope-h);
+            background: #ffffff;
+            position: absolute;
+            z-index: 10;
+            cursor: pointer;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), top 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #envelope-closed::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            border-left: 75px solid transparent;
+            border-right: 75px solid transparent;
+            border-top: 50px solid #e0e0e0;
+        }
+
+        .shake { animation: shake 0.1s infinite; }
+        @keyframes shake {
+            0% { transform: translate(0,0); }
+            50% { transform: translate(5px, 5px); }
+            100% { transform: translate(0,0); }
+        }
+
+        /* Container da Carta Aberta */
+        #letter-container {
+            display: none;
+            z-index: 20;
+            width: 90%;
+            max-width: 450px;
+            animation: openLetter 1s ease-out forwards;
+        }
+
+        @keyframes openLetter {
+            from { opacity: 0; transform: translateY(100px) scale(0.8); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* --- ESTILO SOLICITADO: Papel Vermelho com Opacidade --- */
+        .paper {
+            background: rgba(185, 28, 28, 0.85); /* Vermelho com 85% de opacidade */
+            backdrop-filter: blur(5px); /* Efeito de vidro jateado leve */
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            color: #ffffff; /* Letras Brancas */
+            line-height: 1.8;
+            font-size: 1.15rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Melhora a leitura */
+        }
+
+        .heart-icon {
+            display: block;
+            font-size: 2rem;
+            margin-top: 20px;
+            color: #ffffff;
+            filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="extravagant-bg"></div>
+    <div id="envelope-closed"></div>
+
+    <div id="letter-container">
+        <div class="paper">
+            “Brenda, vou utilizar da minha inteligência, chatGPT, Gemini, Códigos HTML, Páginas na WEB, tudo que é inteligência artificial pra falar de uma certeza do mundo: você é linda de um jeito que vai muito além da aparência. O seu sorriso é simplesmente incrível (olha o fundo piscando com brilho, da um sorriso ai), daqueles que iluminam qualquer ambiente e deixam tudo mais leve. 
+            <br><br>
+            Além disso, a sua inteligência chama atenção, seu humor duvidoso(melhor parte), a forma como você pensa(às vezes até demais), fala e enxerga as coisas é admirável. Você é incrível, completa, e tem algo naturalmente especial que faz você ser exatamente perfeita do seu jeito. 💙”
+            <span class="heart-icon">💙</span>
+        </div>
+    </div>
+
+    <script>
+        let clicks = 0;
+        const env = document.getElementById('envelope-closed');
+        const container = document.getElementById('letter-container');
+        const bg = document.getElementById('extravagant-bg');
+
+        function centerEnv() {
+            if (clicks === 0) {
+                env.style.left = (window.innerWidth / 2 - 75) + 'px';
+                env.style.top = (window.innerHeight / 2 - 50) + 'px';
+            }
+        }
+        window.addEventListener('resize', centerEnv);
+        centerEnv();
+
+        function playSound() {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(200, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(800, ctx.currentTime + 0.4);
+            gain.gain.setValueAtTime(0.1, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.4);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.4);
+        }
+
+        env.addEventListener('click', () => {
+            clicks++;
+
+            if (clicks < 5) {
+                const padding = 80;
+                const maxX = window.innerWidth - 150 - padding;
+                const maxY = window.innerHeight - 100 - padding;
+                
+                env.style.left = (Math.random() * maxX + padding/2) + 'px';
+                env.style.top = (Math.random() * maxY + padding/2) + 'px';
+            } else {
+                env.style.pointerEvents = 'none';
+                env.classList.add('shake');
+                
+                try { playSound(); } catch(e) {}
+
+                setTimeout(() => {
+                    env.style.display = 'none';
+                    bg.style.opacity = '1';
+                    container.style.display = 'block';
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>
