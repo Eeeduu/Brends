@@ -24,6 +24,25 @@
             align-items: center;
         }
 
+        /* Ajustes para telemóveis */
+@media (max-width: 480px) {
+    .paper {
+        padding: 20px; /* Diminui o espaço interno */
+        font-size: 1rem; /* Diminui o tamanho da letra */
+        line-height: 1.5; /* Diminui o espaço entre linhas */
+        margin: 10px; /* Garante que a carta não cole nas bordas */
+    }
+
+    #letter-container {
+        width: 95%; /* Ocupa quase toda a largura, mas deixa margem */
+    }
+
+    .heart-icon {
+        font-size: 1.5rem; /* Diminui o coração para poupar espaço */
+        margin-top: 10px;
+    }
+}
+        
         /* Camada para o GIF de fundo */
         #extravagant-bg {
             position: fixed;
