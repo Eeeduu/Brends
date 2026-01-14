@@ -31,7 +31,7 @@
             z-index: 1;
             opacity: 0;
             transition: opacity 1s ease-in;
-            background-image: url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWJ5aHk2ajU3enY3bmFyejRnN2NraWp5bXE0Nzk4bnhxdjZxaWx1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jFItARFcDC46PpVDWC/giphy.gif');
+            background-image: url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3ZidGpxbm5oZzR4eXZ4ZzR4eXZ4ZzR4eXZ4ZzR4eXZ4ZzR4eXImZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/3oriO0OEd9QIDdllqo/giphy.gif');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -104,24 +104,7 @@
             color: #ffffff;
             filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));
         }
-/* Ajustes para telemóveis */
-@media (max-width: 480px) {
-    .paper {
-        padding: 20px; /* Diminui o espaço interno */
-        font-size: 1rem; /* Diminui o tamanho da letra */
-        line-height: 1.5; /* Diminui o espaço entre linhas */
-        margin: 10px; /* Garante que a carta não cole nas bordas */
-    }
 
-    #letter-container {
-        width: 95%; /* Ocupa quase toda a largura, mas deixa margem */
-    }
-
-    .heart-icon {
-        font-size: 1.5rem; /* Diminui o coração para poupar espaço */
-        margin-top: 10px;
-    }
-}
     </style>
 </head>
 <body>
@@ -131,7 +114,10 @@
 
     <div id="letter-container">
         <div class="paper">
-Curiosa?
+            “Brenda, eu preciso te dizer isso com toda a certeza do mundo: você é linda de um jeito que vai muito além da aparência. O seu sorriso é simplesmente incrível, daqueles que iluminam qualquer ambiente e deixam tudo mais leve. 
+            <br><br>
+            Além disso, a sua inteligência chama atenção — a forma como você pensa, fala e enxerga as coisas é admirável. Você é incrível, completa, e tem algo naturalmente especial que faz você ser exatamente perfeita do seu jeito. 💙”
+            <span class="heart-icon">💙</span>
         </div>
     </div>
 
@@ -168,7 +154,7 @@ Curiosa?
         env.addEventListener('click', () => {
             clicks++;
 
-            if (clicks < 5) {
+            if (clicks < 3) {
                 const padding = 80;
                 const maxX = window.innerWidth - 150 - padding;
                 const maxY = window.innerHeight - 100 - padding;
